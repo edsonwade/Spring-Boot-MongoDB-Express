@@ -1,6 +1,7 @@
 package com.example.springbootmongodbexpress.service;
 
 import com.example.springbootmongodbexpress.service.exception.StudentNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.springbootmongodbexpress.persistence.model.Student;
@@ -11,13 +12,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class StudentService {
 
     Student student = new Student();
 
 
-    @Autowired
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
 
 
     public List<Student> findAllStudents() {
@@ -25,13 +26,6 @@ public class StudentService {
     }
 
 
-    public Student findStudentByEmail(String email) {
-        Optional<Student> students = studentRepository.findStudentByEmail(email);
-        if (students.isPresent()) {
-            return student;
-        }
-        throw new StudentNotFoundException();
-    }
 
 
 }
