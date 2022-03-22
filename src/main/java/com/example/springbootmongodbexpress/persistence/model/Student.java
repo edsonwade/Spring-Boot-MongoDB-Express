@@ -1,6 +1,7 @@
 package com.example.springbootmongodbexpress.persistence.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -18,7 +19,6 @@ import java.util.List;
 
 @Document
 @Data
-@NoArgsConstructor
 public class Student implements Serializable {
     private static final long serialVersion = 1L;
     @Id
@@ -43,5 +43,8 @@ public class Student implements Serializable {
         this.subjects = subjects;
         this.totalSpentInBooks = totalSpentInBooks;
         this.created_at = created_at;
+    }
+
+    public Student() {
     }
 }
