@@ -34,4 +34,18 @@ public class StudentController {
         studentService.AddNewStudent(student);
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping(value = "/update/{studentId}")
+    public void updateStudent(@PathVariable String studentId,
+                              @RequestParam(required = false) String firstName,
+                              @RequestParam(required = false) String email) {
+        studentService.updateStudent(studentId,firstName,email);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping(value = "/{studentId}")
+    public void deleteStudentById(@PathVariable String studentId) {
+        studentService.deleteStudent(studentId);
+    }
+
 }
